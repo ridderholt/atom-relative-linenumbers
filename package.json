@@ -1,7 +1,7 @@
 {
   "name": "relative-numbers",
   "main": "./lib/relative-numbers",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Shows relative line numbers in editor",
   "activationEvents": ["application:open", "relative-numbers:toggle"],
   "repository": "https://github.com/robinridderholt/atom-relative-linenumbers",
