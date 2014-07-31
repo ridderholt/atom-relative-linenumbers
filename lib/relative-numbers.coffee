@@ -35,11 +35,3 @@ module.exports =
     for i in [start...totalLine]
       row = @_getRowElementByLineNumber(i)
       @_setNewRowNumber(row, counter++)
-
-  deactivate: ->
-    atom.workspaceView.eachEditorView (editor) =>
-      editor.off events.join(' '),
-    @relativeNumbersView.destroy()
-
-  serialize: ->
-    relativeNumbersViewState: @relativeNumbersView.serialize()

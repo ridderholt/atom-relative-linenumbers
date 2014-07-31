@@ -3,11 +3,11 @@
   "main": "./lib/relative-numbers",
   "version": "0.1.0",
   "description": "Shows relative line numbers in editor",
-  "activationEvents": ["relative-numbers:toggle"],
+  "activationEvents": ["relative-numbers:toggle", "application:open"],
   "repository": "https://github.com/robinridderholt/atom-relative-linenumbers ",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": "*"
   },
   "dependencies": {
   }
