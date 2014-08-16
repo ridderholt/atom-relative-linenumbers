@@ -1,6 +1,8 @@
 {$} = require 'atom'
 
 module.exports =
+  configDefaults:
+    displayTrueLineNumberOnCurrentLine: false
 
   activate: (state) ->
     atom.workspaceView.eachEditorView (editorView) =>
@@ -17,7 +19,13 @@ module.exports =
 
   _recalculateLineNumbers: (currentLineNumber, totalLines) ->
     currentRow = @_getRowElementByLineNumber(currentLineNumber)
-    @_setNewRowNumber(currentRow, 0)
+
+    if atom.config.get("relative-numbers.displayTrueLineNumberOnCurrentLine")
+      trueLineNumber = currentLineNumber + 1
+      @_setNewRowNumber(currentRow, trueLineNumber)
+    else
+      @_setNewRowNumber(currentRow, 0)
+
     @_recalculateBeforeCurrentRow(currentLineNumber)
     @_recalculateAfterCurrentRow(currentLineNumber, totalLines)
 
