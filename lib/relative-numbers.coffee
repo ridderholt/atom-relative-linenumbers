@@ -6,18 +6,15 @@ module.exports =
 
   activate: (state) ->
     atom.workspaceView.eachEditorView (editorView) =>
-      @_start(editorView)
-
+      @_initPlugin(editorView)
       events = [ 'core:move-up', 'vim-mode:move-up', 'core:move-down', 'vim-mode:move-down' ]
       editorView.on events.join(' '), =>
-        atom.workspaceView.eachEditorView (editorView) =>
-          @_start(editorView)
+          @_initPlugin(editorView)
 
-  _start: (editorView) ->
+  _initPlugin: (editorView) ->
       currentLineNumber = editorView.getEditor().getCursorScreenRow()
       totalLines = editorView.getEditor().getLineCount()
       @_recalculateLineNumbers(currentLineNumber, totalLines)
-
 
   _recalculateLineNumbers: (currentLineNumber, totalLines) ->
     currentRow = @_getRowElementByLineNumber(currentLineNumber)
